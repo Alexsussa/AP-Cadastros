@@ -87,16 +87,12 @@ class Login:
         self.lbLink = Label(self.c5, text='ALTERAR USUÁRIO E SENHA', bg='white', fg='blue', cursor='hand2')
         self.lbLink.pack()
         self.lbLink.bind('<Button-1>', self.MudarSenha)
-        # self.lbLink.bind('<Enter>', self.Dica)
-        self.lbLink.bind('<Leave>', self.SairDica)
 
         self.c1 = Label(self.c1, image=logo)
         self.c1.pack()
 
     def MudarSenha(self, event=None):
         os.system('xterm -e sudo python3 alterar_senha.py') # Executa através do terminal o arquivo alterar_senha.py
-
-    def SairDica(self, event=None):
         self.lbLink.configure(text='ALTERAR USUÁRIO E SENHA')
 
         # Barra de progresso ao acessar da tela de login para a tela principal
