@@ -93,7 +93,6 @@ class Login:
 
     def MudarSenha(self, event=None):
         os.system('xterm -e sudo python3 alterar_senha.py') # Executa através do terminal o arquivo alterar_senha.py
-        self.lbLink.configure(text='ALTERAR USUÁRIO E SENHA')
 
         # Barra de progresso ao acessar da tela de login para a tela principal
         # Ainda não implementada
