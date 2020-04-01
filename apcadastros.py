@@ -93,6 +93,7 @@ class Login:
 
     def MudarSenha(self, event=None):
         os.system('xterm -e sudo python3 alterar_senha.py') # Executa através do terminal o arquivo alterar_senha.py
+        self.lbLink.configure(text='ALTERAR USUÁRIO E SENHA')
 
         # Barra de progresso ao acessar da tela de login para a tela principal
         # Ainda não implementada
@@ -297,18 +298,21 @@ class Login:
                         janela.bind('<Button-3><ButtonRelease-3>', self.MostrarMenuMouse)
 
                         #Barra de menu superior ainda não implementada
-                        """self.menuBar = Menu(janela)
+                        self.menuBar = Menu(janela)
                         self.menuArquivo = Menu(self.menuBar, tearoff=False)
-                        self.menuArquivo.add_cascade(label='Salvar')
-                        self.menuArquivo.add_cascade(label='Abrir')
-                        self.menuArquivo.add_cascade(label='Sair', command=self.SairJanela(event='<Button-1>'))
+                        self.menuArquivo.add_command(label='Salvar')
+                        self.menuArquivo.add_command(label='Abrir')
+                        self.menuArquivo.add_command(label='Sair', command=janela.destroy)
                         self.menuBar.add_cascade(label='Arquivo', menu=self.menuArquivo)
 
                         self.menuAjuda = Menu(self.menuBar, tearoff=False)
-                        self.menuAjuda.add_cascade(label='Sobre')
-                        self.menuBar.add_cascade(label='Ajuda', menu=self.menuAjuda, command=self.sobre)
+                        self.menuAjuda.add_command(label='Sobre', command=self.sobre)
+                        self.menuBar.add_cascade(label='Ajuda', menu=self.menuAjuda)
 
-                        janela.config(menu=self.menuBar)"""
+                        janela.bind('<Control-h>', self.sobre)
+                        janela.bind('<Control-H>', self.sobre)
+
+                        janela.config(menu=self.menuBar)
 
                         janela.bind('<Button-1>', self.maskCampos)
 
@@ -409,12 +413,8 @@ class Login:
                             self.txtcep.insert(5, '-')
 
                     # Barra de menu superior não implementada
-                    def sobre(self):
-                        about = Toplevel()
-                        aviso = Label(about, text='Software em fase Alpha Teste. Versão 0.1')
-                        aviso.pack()
-                        ok = Button(about, text='OK', command=about.destroy)
-                        ok.pack(pady=20)
+                    def sobre(self, event=None):
+                        sobre = showinfo(title='SOBRE', message='AP Cadastros Versão 1.4.5.')
 
                     def cadastrarClientes(self):
 
@@ -674,11 +674,6 @@ class Login:
                             self.bairro = linha[7]
                             self.cidade = linha[8]
                             self.estado = linha[9]
-
-                            if len(self.txtcpfcnpj.get()) == 11:
-                                self.lbcpfcnpj.config(values=cpfcnpjs[0])
-                            if len(self.txtcpfcnpj.get()) == 14:
-                                self.lbcpfcnpj.config(values=cpfcnpjs[1])
 
                         self.txtid.delete(0, END)
                         self.txtid.insert(0, self.id)
