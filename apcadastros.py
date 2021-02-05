@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 
 __developer__ = 'Alex Pinheiro'
 __version__ = 1.4
